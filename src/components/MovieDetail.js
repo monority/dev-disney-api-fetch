@@ -6,22 +6,22 @@ export default class MemberDetail extends Component {
   };
 
   async getMovies(id) {
-    const data = await fetch(
-      `https://elorri.fr/api/disney-plus/movies/${id}`
-    ).then((response) => response.json());
-
+    const data = await fetch("https://elorri.fr/api/disney-plus/movies").then(
+        (response) => response.json());
     this.setState({
       movies: data,
     });
   }
   componentDidMount() {
-    this.getMovies(this.props.match.params.id);
+    this.getMovies(this.props.match.params);
   }
 
   render() {
     return (
       <div>
-        <h1>Affichage du détail du membre n°{this.props.match.params.id}</h1>
+        <h1>Film n°{this.props.match.params.id}</h1>
+        <img src={this.props.match.params.cover} alt="" />
+        <p>{this.props.match.params.description}</p>
       </div>
     );
   }
