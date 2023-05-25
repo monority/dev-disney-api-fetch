@@ -1,0 +1,60 @@
+@use "reset";
+
+@use "variables" as v;
+
+@use "mixins" as m;
+
+nav{
+    display: flex;
+    img{
+        max-width: 100%;
+        height: 150px;
+    }
+}
+.container {
+    max-width: 220rem;
+    margin: 0 auto;
+
+    .wrappers {
+        display: flex;
+
+        .wrapper {
+            width: 100%;
+
+    
+                img {
+                    max-width: 100%;
+                }
+
+        }
+    }
+}
+
+#new, #suggest {
+    figure {
+        margin: 0 3rem 0 0;
+
+}
+}
+#company{
+    .wrapper{
+        margin:0 2rem 0 0
+    }
+.btn{
+    width: 100%;
+    height: 100%;
+    background: rgb(68,71,81);
+    background: linear-gradient(0deg, rgba(68,71,81,1) 0%, rgba(79,82,89,1) 100%);
+    border: 2px solid rgb(202, 202, 202);
+    border-radius: 3rem;
+    box-shadow: 0px 10px 17px 2px #242424;
+    img{
+        max-width: 80% ;   
+    }
+}
+}
+
+#carrousel{
+    height: 100%;
+}
+
