@@ -2,7 +2,9 @@ import Movie from "./components/Movie";
 import "./sass/main.scss";
 import { Component } from "react";
 import { Button } from "./components/Button";
-import Carrousel from "./components/carrousel";
+import companies from "./components/companies";
+import logo from "./img/logo.png";
+import { Carousel } from "antd";
 
 export default class App extends Component {
   state = {
@@ -10,11 +12,8 @@ export default class App extends Component {
     suggestmovies: [],
     showItem: 6,
     showSuggest: 3,
-    companiesdata: {},
+    companies,
   };
-  showDesc(){
-
-  }
 
   async getMovies() {
     const data = await fetch("https://elorri.fr/api/disney-plus/movies").then(
@@ -24,6 +23,7 @@ export default class App extends Component {
       movies: data,
     });
   }
+
   async getSuggestMovies() {
     const data = await fetch("https://elorri.fr/api/disney-plus/suggest").then(
       (response) => response.json()
@@ -37,6 +37,11 @@ export default class App extends Component {
     this.getMovies();
     this.getSuggestMovies();
   }
+  Carrousel = () => {
+    const onChange = (currentSlide) => {
+      console.log(currentSlide);
+    };
+  };
 
   render() {
     const listMovies = this.state.movies
@@ -48,7 +53,6 @@ export default class App extends Component {
             id={item.id}
             img={item.poster}
             description={this.description}
-            action={() => this.showDesc(this.description)}
           />
         );
       });
@@ -56,55 +60,43 @@ export default class App extends Component {
     const listSuggest = this.state.suggestmovies
       .slice(0, this.state.showSuggest)
       .map((item, index) => {
-        return <Movie key={item.id} id={item.id} img={item.cover}/>;
+        return <Movie key={item.id} id={item.id} img={item.cover} />;
       });
+
+    const listCompanies = this.state.companies.map((item) => {
+      return (
+        <Button
+          key={item.id}
+          name={item.company}
+          className="btn"
+          sourcename={item.logo}
+        ></Button>
+      );
+    });
+
+    const listHighlight = this.state.suggestmovies.slice(0,5).map((item, index) => {
+      return (
+        
+      <img src={item.cover}/>)
+    });
 
     return (
       <div>
         <nav>
           <div className="container">
-            <img src={require("../src/img/logo.png")} alt="" />
+            <div className="logo">
+              <img src={logo} alt="" />
+            </div>
           </div>
         </nav>
         <section id="carrousel">
-          <div className="container"></div>
-        </section>
-        <section id="company">
           <div className="container">
-            <div className="wrappers">
-              <Button className="btn">
-                <figure>
-                  <img
-                    src={require("../src/img/companies/logo-disney.png")}
-                    alt=""
-                  />
-                </figure>
-              </Button>
-              <Button className="btn">
-                <figure>
-                  <img
-                    src={require("../src/img/companies/logo-marvel.png")}
-                    alt=""
-                  />{" "}
-                </figure>
-              </Button>
-              <Button className="btn">
-                <figure>
-                  <img
-                    src={require("../src/img/companies/logo-pixar.png")}
-                    alt=""
-                  />{" "}
-                </figure>
-              </Button>
-              <Button className="btn">
-                <figure>
-                  <img
-                    src={require("../src/img/companies/logo-starwars.png")}
-                    alt=""
-                  />{" "}
-                </figure>
-              </Button>
-            </div>
+            <Carousel afterChange={this.Carrousel()}>{listHighlight}</Carousel>
+          </div>
+        </section>
+        <section id="companybtn">
+          <div className="container">
+            <div className="wrappers">{listCompanies}</div>
           </div>
         </section>
 
