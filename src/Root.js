@@ -3,7 +3,6 @@ import NotFound from './components/NotFound'
 import React from 'react'
 import App from './App'
 import MovieDetail from './components/MovieDetail'
-import Movie from './components/Movie'
 import CompanyName from './components/CompanyName';
 
 const Root = () => {

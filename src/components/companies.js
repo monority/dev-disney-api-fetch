@@ -1,8 +1,8 @@
-import logoDisney from "../img/companies/logo-disney.png";
-import logoMarvel from "../img/companies/logo-marvel.png";
-import logoNational from "../img/companies/logo-nationalgeographic.png";
-import logoPixar from "../img/companies/logo-pixar.png";
-import logoStar from "../img/companies/logo-starwars.png";
+import logoDisney from '../assets/img/companies/logo-disney.png'
+import logoMarvel from "../assets/img/companies/logo-marvel.png";
+import logoNational from "../assets/img/companies/logo-nationalgeographic.png";
+import logoPixar from "../assets//img/companies/logo-pixar.png";
+import logoStar from "../assets/img/companies/logo-starwars.png";
 
 
 const companies = [

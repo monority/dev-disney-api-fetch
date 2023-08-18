@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import companies from "./companies";
-import logo from "../img/logo.png";
+import logo from "../assets/img/logo.png";
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 export default class CompanyName extends Component {
   state = {
@@ -23,9 +23,9 @@ export default class CompanyName extends Component {
 
   render() {
     const listCompanies = this.state.companies.map((item) => {
-      return <div className="wrapper">
+      return <div className="wrapper" key={item.id}>
               <Link to={`/movies/${item.id}`}>
-        <img src={item.poster} />
+        <img src={item.poster} alt="poster"/>
         </Link>
         </div>;
     });

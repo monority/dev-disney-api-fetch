@@ -3,7 +3,7 @@ import "./sass/main.scss";
 import { Component } from "react";
 import { Button } from "./components/Button";
 import companies from "./components/companies";
-import logo from "./img/logo.png";
+import logo from "./assets/img/logo.png";
 import { Carousel } from "antd";
 
 export default class App extends Component {
@@ -67,17 +67,19 @@ export default class App extends Component {
       return (
         <Button
           key={item.id}
+          id={item.id}
           name={item.company}
           className="btn"
           sourcename={item.logo}
+          alt="Entreprise"
         ></Button>
       );
     });
 
-    const listHighlight = this.state.suggestmovies.slice(0,5).map((item, index) => {
+    const listHighlight = this.state.suggestmovies.slice(0, 5).map((item, index) => {
       return (
-        
-      <img src={item.cover}/>)
+
+        <img src={item.cover} key={item.id} />)
     });
 
     return (
@@ -91,25 +93,33 @@ export default class App extends Component {
         </nav>
         <section id="carrousel">
           <div className="container">
-            <Carousel afterChange={this.Carrousel()}>{listHighlight}</Carousel>
+            <Carousel afterChange={this.Carrousel()} autoplay="true" autoplaySpeed="30">
+              {listHighlight}
+            </Carousel>
           </div>
         </section>
         <section id="companybtn">
           <div className="container">
-            <div className="wrappers">{listCompanies}</div>
+            <div className="wrappers">
+              {listCompanies}
+            </div>
           </div>
         </section>
 
         <section id="new">
           <div className="container">
             <h1>Nouveautés</h1>
-            <div className="wrappers">{listMovies}</div>
+            <div className="wrappers">
+              {listMovies}
+            </div>
           </div>
         </section>
         <section id="suggest">
           <div className="container">
             <h1>Suggestions</h1>
-            <div className="wrappers">{listSuggest}</div>
+            <div className="wrappers">
+              {listSuggest}
+            </div>
           </div>
         </section>
       </div>
