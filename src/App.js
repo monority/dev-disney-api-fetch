@@ -3,9 +3,8 @@ import "./sass/main.scss";
 import { Component } from "react";
 import { Button } from "./components/Button";
 import companies from "./components/companies";
-import logo from "./assets/img/logo.png";
 import { Carousel } from "antd";
-
+import Nav from "./components/Nav";
 export default class App extends Component {
   state = {
     movies: [],
@@ -78,19 +77,13 @@ export default class App extends Component {
 
     const listHighlight = this.state.suggestmovies.slice(0, 5).map((item, index) => {
       return (
-
-        <img src={item.cover} key={item.id} />)
+          <img src={item.cover} key={item.id} id={item.id} />
+  )
     });
 
     return (
-      <div>
-        <nav>
-          <div className="container">
-            <div className="logo">
-              <img src={logo} alt="" />
-            </div>
-          </div>
-        </nav>
+      <>
+        <Nav></Nav>
         <section id="carrousel">
           <div className="container">
             <Carousel afterChange={this.Carrousel()} autoplay="true" autoplaySpeed="30">
@@ -122,7 +115,7 @@ export default class App extends Component {
             </div>
           </div>
         </section>
-      </div>
+      </>
     );
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import logo from "../assets/img/logo.png";
-import { Link } from 'react-router-dom/cjs/react-router-dom'
-
+import Nav from "./Nav";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 export default class MovieDetail extends Component {
   state = {
     movies: {},
@@ -22,16 +21,23 @@ export default class MovieDetail extends Component {
 
   render() {
     return (
-      <div>
-        <Link to={`/`}>
-          <div className="logo">
-            <img src={logo} alt="" />
+      <>
+        <div className="movie-detail">
+          <Nav></Nav>
+          <div className="container block">
+            <div className="wrap-video">
+              <iframe width="420" height="315" title="video bande annonce" src={this.state.movies.video}></iframe>
+            </div>
+            <div className="wrap-content"><p>{this.state.movies.description}</p>
+              <h5>
+                {this.state.movies.company}
+              </h5>
+
+
+            </div>
           </div>
-        </Link>
-        <iframe width="420" height="315" title="video bande annonce" src={this.state.movies.video}></iframe>
-        <p>{this.state.movies.description}</p>
-        <p>{this.state.movies.company}</p>
-      </div>
+        </div>
+      </>
     );
   }
 }

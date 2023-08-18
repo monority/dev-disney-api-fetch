@@ -9,7 +9,6 @@ const companies = [
     {
         logo: logoDisney,
         company: "disney",
-        id: "",
     },
  
     {
